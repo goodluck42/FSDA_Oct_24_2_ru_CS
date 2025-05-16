@@ -53,23 +53,23 @@
 
 
 
-var calc = new Calculator();
-
-double n1, n2;
-
-n1 = double.Parse(Console.ReadLine());
-n2 = double.Parse(Console.ReadLine());
-
-try
-{
-	double result = calc.Divide(n1, n2);
-
-	Console.WriteLine($"result = {result}");
-}
-catch (ZeroDivisionException ex)
-{
-	Console.WriteLine(ex.Message);
-}
+// var calc = new Calculator();
+//
+// double n1, n2;
+//
+// n1 = double.Parse(Console.ReadLine());
+// n2 = double.Parse(Console.ReadLine());
+//
+// try
+// {
+// 	double result = calc.Divide(n1, n2);
+//
+// 	Console.WriteLine($"result = {result}");
+// }
+// catch (ZeroDivisionException ex)
+// {
+// 	Console.WriteLine(ex.Message);
+// }
 
 
 
@@ -94,3 +94,36 @@ catch (ZeroDivisionException ex)
 // {
 // 	Console.WriteLine("An exception was thrown!");
 // }
+
+int[] arr1 = new int[5] {10, 20, 30, 40, 50};
+int[] arr2 = new int[3] {20, 40, 50};
+
+int filterCount = 0;
+
+for (int i = 0; i < arr1.Length; i++)
+{
+	for (int j = 0; j < arr2.Length; j++)
+	{
+		if (arr1[i] == arr2[j])
+		{
+			filterCount++;
+		}
+	}
+}
+
+int[] filteredArray = new int[arr1.Length - filterCount];
+
+Console.WriteLine(filterCount);
+
+for (int i = 0; i < arr1.Length; i++)
+{
+	for (int j = 0; j < arr2.Length; j++)
+	{
+		if (arr1[i] == arr2[j])
+		{
+			filterCount++;
+		}
+	}
+}
+
+

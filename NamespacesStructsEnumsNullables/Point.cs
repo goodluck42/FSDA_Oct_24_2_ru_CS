@@ -1,0 +1,6 @@
+namespace NamespacesStructsEnumsNullables;
+
+struct Point
+{
+	
+}
