@@ -1,0 +1,5 @@
+namespace OperatorOverloadingRecords;
+
+class User
+{
+}
