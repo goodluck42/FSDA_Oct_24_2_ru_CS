@@ -2,40 +2,43 @@
 
 
 ////////// Delegates 1
-// int a, b;
-// char op;
-//
-// Console.WriteLine("Enter first number: ");
-// a = int.Parse(Console.ReadLine()!);
-//
-// Console.WriteLine("Enter operation (+, *, /)");
-// op = char.Parse(Console.ReadLine()!);
-//
-// Console.WriteLine("Enter second number: ");
-// b = int.Parse(Console.ReadLine()!);
-//
-// Operation? operation = null;
-//
-// switch (op)
-// {
-// 	case '+':
-// 		operation = Functions.Add;
-// 		break;
-// 	case '*':
-// 		operation = Functions.Multiply;
-// 		break;
-// 	case '/':
-// 		operation = Functions.Divide;
-// 		break;
-// 	case '-':
-// 		operation = (num1, num2) => num1 - num2;
-// 		
-// 		break;
-// }
-//
-// int? result = operation?.Invoke(a, b);
-// 	
-// Console.WriteLine(result);
+int a, b;
+char op;
+
+Console.WriteLine("Enter first number: ");
+a = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine("Enter operation (+, *, /)");
+op = char.Parse(Console.ReadLine()!);
+
+Console.WriteLine("Enter second number: ");
+b = int.Parse(Console.ReadLine()!);
+
+Operation? operation = null;
+
+switch (op)
+{
+	case '+':
+		operation = Functions.Add;
+		break;
+	case '*':
+		operation = Functions.Multiply;
+		break;
+	case '/':
+		operation = Functions.Divide;
+		break;
+	case '-':
+		operation = (num1, num2) =>
+		{
+			return num1 - num2;
+		};
+		
+		break;
+}
+
+int? result = operation?.Invoke(a, b);
+	
+Console.WriteLine(result);
 
 
 ///////////////// Lambdas
@@ -52,32 +55,52 @@
 // Нармин - 3
 
 ////////// Multicast Delegates
-CallbackDelegate callbackDelegate = () =>
+
+CallbackDelegate callbackDelegates1 = () =>
 {
-	Console.WriteLine("First");
+	Console.WriteLine("Delegate 1");
 
 	return 1;
 };
 
-callbackDelegate += () =>
+
+
+callbackDelegates1 += () =>
 {
-	Console.WriteLine("Second");
+	Console.WriteLine("Delegate 2");
 
 	return 2;
 };
 
-callbackDelegate += () =>
+callbackDelegates1 += () =>
 {
-	Console.WriteLine("Third");
+	Console.WriteLine("Delegate 3");
 
 	return 3;
 };
 
-callbackDelegate += () =>
+CallbackDelegate callbackDelegates2 = () =>
 {
-	Console.WriteLine("Fourth");
+	Console.WriteLine("Delegate 4");
 
 	return 4;
 };
 
-Console.WriteLine(callbackDelegate?.Invoke());
+callbackDelegates2 += () =>
+{
+	Console.WriteLine("Delegate 5");
+
+	return 5;
+};
+
+callbackDelegates2 += () =>
+{
+	Console.WriteLine("Delegate 6");
+
+	return 6;
+};
+
+callbackDelegates1 += callbackDelegates2;
+
+
+callbackDelegates1?.Invoke();
