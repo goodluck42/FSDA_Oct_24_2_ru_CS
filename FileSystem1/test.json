@@ -1,0 +1,10 @@
+{
+	"key_string": "stringValue",
+	"key_number": 9.2,
+	"key_null": null,
+	"key_boolean": false,
+	"key_object": {
+		"subkey": []
+	},
+	"key_array": []
+}
