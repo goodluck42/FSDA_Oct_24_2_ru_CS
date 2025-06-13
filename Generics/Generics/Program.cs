@@ -1,46 +1,45 @@
 ﻿using System.Collections;
 
-int iterations = 10_000_000;
-
-// ArrayList
-{
-	var now = DateTime.Now;
-	var arr = new ArrayList();
-
-	for (int i = 0; i < iterations; i++)
-	{
-		arr.Add(Random.Shared.Next().ToString()); // boxing
-	}
-
-	for (int i = 0; i < iterations; i++)
-	{
-		string value = (string)arr[i]; // unbox
-	}
-	
-	var end = DateTime.Now;
-
-	Console.WriteLine($"ArrayList: {(end - now).TotalMilliseconds}");
-}
-
-{
-	
-	var now = DateTime.Now;
-	var arr = new List<int>();
-
-	for (int i = 0; i < iterations; i++)
-	{
-		arr.Add(Random.Shared.Next()); // boxing
-	}
-
-	for (int i = 0; i < iterations; i++)
-	{
-		int value = arr[i]; // unbox
-	}
-	
-	var end = DateTime.Now;
-
-	Console.WriteLine($"List<T>: {(end - now).TotalMilliseconds}");
-}
+// int iterations = 10_000_000;
+//
+// // ArrayList
+// {
+// 	var now = DateTime.Now;
+// 	var arr = new ArrayList();
+//
+// 	for (int i = 0; i < iterations; i++)
+// 	{
+// 		arr.Add(Random.Shared.Next().ToString()); // boxing
+// 	}
+//
+// 	for (int i = 0; i < iterations; i++)
+// 	{
+// 		string value = (string)arr[i]; // unbox
+// 	}
+//
+// 	var end = DateTime.Now;
+//
+// 	Console.WriteLine($"ArrayList: {(end - now).TotalMilliseconds}");
+// }
+//
+// {
+// 	var now = DateTime.Now;
+// 	var arr = new List<int>();
+//
+// 	for (int i = 0; i < iterations; i++)
+// 	{
+// 		arr.Add(Random.Shared.Next()); // boxing
+// 	}
+//
+// 	for (int i = 0; i < iterations; i++)
+// 	{
+// 		int value = arr[i]; // unbox
+// 	}
+//
+// 	var end = DateTime.Now;
+//
+// 	Console.WriteLine($"List<T>: {(end - now).TotalMilliseconds}");
+// }
 
 //////////////////////////
 // ArrayList list = new ArrayList();
@@ -109,3 +108,18 @@ int iterations = 10_000_000;
 // 	public string? Extension => Path.GetExtension(Name);
 // 	public override bool IsFolder => false;
 // }
+
+
+var httpClient = new HttpClient();
+
+try
+{
+	for (int i = 0; i < 50; i++)
+	{
+		await httpClient.PostAsync("http://localhost:8005/", null);
+	}
+}
+catch (Exception ex)
+{
+	Console.WriteLine(ex.Message);
+}
