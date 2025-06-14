@@ -1,0 +1,6 @@
+﻿services:
+  filesystem2:
+    image: filesystem2
+    build:
+      context: .
+      dockerfile: FileSystem2/Dockerfile
